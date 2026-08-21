@@ -6,4 +6,5 @@ export interface Product {
     imageUrl: string;
     stock: number;
 }
-export interface Product{}
+
+export type ProductInput = Omit<Product, 'id'>;

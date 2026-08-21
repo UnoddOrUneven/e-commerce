@@ -4,4 +4,7 @@ export interface User{
     balance: number;
     passwordHash: string;
 }
-export interface User{}
+export interface UserInput{
+    name: string;
+    password:string;
+}
