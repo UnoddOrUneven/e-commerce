@@ -1,5 +1,7 @@
 import './App.css'
 import {useState,useEffect} from "react";
+import type {User} from "./models/user.ts";
+import type {Product} from "./models/product.ts";
 
 async function  getAllProducts() {
   const response =  await fetch("/api/products/get-all");
@@ -25,7 +27,7 @@ function App() {
   <div className="product-container">
     Products:
    <ul>
-     {products.map((product) => (
+     {products.map((product : Product) => (
          <li key={product.id}>
              {`${product.name} - ${product.price}
              ${product.description}
@@ -34,7 +36,7 @@ function App() {
      ))}
    </ul>
       Users:
-      {users.map((user) => (
+      {users.map((user: User) => (
           <li key={user.id}>
               {user.name}
           </li>
