@@ -11,3 +11,4 @@ it("POST api/users/create creates a user", async () => {
         })
         expect(response.statusCode).toBe(201);
 })
+
