@@ -17,3 +17,7 @@ export async function addProduct(product: ProductInput) {
 export async function removeProduct(id: number) {
     await productRepository.removeProduct(id);
 }
+export async function setStock(id: number, newStock:number) {
+    if (newStock <=0){return;}
+    await productRepository.setStock(id, newStock);
+}

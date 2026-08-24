@@ -1,0 +1,47 @@
+.card {
+    display:grid;
+    grid-template-columns: 10rem 1fr 6rem;
+    grid-template-rows: 3rem 2fr 2rem;
+    grid-template-areas:
+    "image name add-button"
+    "image description add-button"
+    "image price add-button";
+    height:10rem;
+    padding: 10px 0px 10px 10px;
+    margin:15px;
+    color: White;
+    background-color: slategray;
+    width: 50rem;
+
+}
+.add-to-cart-btn{
+    grid-area: add-button;
+    width: 100%;
+    height: 100%;
+    background-color: slateblue;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.add-to-cart-btn:hover{
+    background-color: mediumslateblue;
+}
+.add-to-cart-btn:active {
+    transform: scale(0.98);
+}
+.card-name{
+    grid-area: name;
+    font-size:1.125rem;
+    font-family: sans-serif;
+}
+.card-description{
+    grid-area: description;
+}
+.card-image{
+    grid-area: image;
+    width:10rem;
+    height:10rem;
+    background-color: lightgray;
+}
+.card-price{
+    grid-area: price;
+}

@@ -5,3 +5,5 @@ export async function getAllProducts(_req: Request, res: Response){
     res.status(200).json(allProducts);
 }
 
+
+

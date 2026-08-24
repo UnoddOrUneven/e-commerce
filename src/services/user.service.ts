@@ -1,6 +1,6 @@
 import * as userRepository from "../users/user.repository.ts";
 import type {User,UserInput} from "../models/user.ts";
-export async function createUser(user:UserInput) {
+export async function createUser(user:UserInput):Promise<User> {
     const passwordHash = await hashPassword(user.password);
     return userRepository.createUser(user.name, passwordHash);
 }

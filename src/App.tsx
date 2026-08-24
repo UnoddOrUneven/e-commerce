@@ -2,6 +2,7 @@ import './App.css'
 import {useState,useEffect} from "react";
 import type {User} from "./models/user.ts";
 import type {Product} from "./models/product.ts";
+import {ProductCard} from "./components/ProductCard.tsx";
 
 async function  getAllProducts() {
   const response =  await fetch("/api/products/get-all");
@@ -29,18 +30,18 @@ function App() {
    <ul>
      {products.map((product : Product) => (
          <li key={product.id}>
-             {`${product.name} - ${product.price}
-             ${product.description}
-             `}
+             <ProductCard product={product}/>
          </li>
      ))}
    </ul>
       Users:
+      <ul>
       {users.map((user: User) => (
           <li key={user.id}>
               {user.name}
           </li>
       ))}
+      </ul>
   </div>
 
   )
