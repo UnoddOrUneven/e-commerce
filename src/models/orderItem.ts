@@ -1,9 +1,9 @@
 export interface OrderItem {
     id: number;
-    order_id: number;
-    product_id: number;
+    orderId: number;
+    productId: number;
     quantity: number;
     price: number;
-    user_id: number;
+    userId: number;
 }
 export type OrderItemInput = Omit<OrderItem, 'id'>;

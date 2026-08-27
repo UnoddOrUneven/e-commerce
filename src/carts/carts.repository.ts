@@ -8,11 +8,11 @@ export async function getAllCarts(): Promise<Cart[]> {
     return response.rows;
 }
 
-export async function getCartByUserId(userId: string): Promise<Cart> {
+export async function getCartByUserId(userId: number): Promise<Cart[]> {
     const response = await pool.query(
         "SELECT * FROM carts WHERE user_id=$1", [userId]
     );
-    return response.rows[0];
+    return response.rows;
 }
 
 export async function addProductToCart(userId: number, productId: number) {

@@ -16,7 +16,7 @@ export async function createOrder(order: OrderInput): Promise<Order> {
         `
             INSERT INTO orders (user_id, status)
             VALUES ($1, $2);
-        `, [order.user_id, order.status]
+        `, [order.userId, order.status]
     )
     return result.rows[0];
 }

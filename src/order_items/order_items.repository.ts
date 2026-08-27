@@ -24,7 +24,7 @@ export async function createOrderItem(orderItem: OrderItemInput):Promise<OrderIt
     const result = await pool.query(`
         INSERT INTO order_items (user_id, order_id, product_id, product_quantity)
         VALUES ($1, $2, $3, $4);`,
-        [orderItem.user_id, orderItem.order_id, orderItem.product_id, orderItem.quantity])
+        [orderItem.userId, orderItem.orderId, orderItem.productId, orderItem.quantity])
     return result.rows[0];
 }
 export async function removeOrderItem(order_id:number) {
