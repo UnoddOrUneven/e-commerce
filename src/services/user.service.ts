@@ -14,8 +14,10 @@ export async function getAllUsers():Promise<User[]> {
 }
 export async function login(password:string,email:string):Promise<string|void> {
     const user:User|undefined = await userRepository.getUserByEmail(email);
-    if (!user) {return}
-    if (await bcrypt.compare(password,user.passwordHash)){
+    if (!user) {
+        throw new Error("User not found");
+    }
+    if (await bcrypt.compare(password,user.password_hash)){
         return jwt.sign({userId:user.id},process.env.JWT_SECRET!,{expiresIn:"1h"});
     }
 }

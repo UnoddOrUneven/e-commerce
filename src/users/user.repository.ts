@@ -17,7 +17,7 @@ export async function getUserById(id: number): Promise<User> {
     return result.rows[0];
 }
 
-export async function getUserByEmail(email: string): Promise<User> {
+export async function getUserByEmail(email: string): Promise<User|undefined> {
     const result = await pool.query(
         `SELECT *
          FROM USERS

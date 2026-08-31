@@ -1,16 +1,17 @@
 import * as cartsService from "../services/carts.service.ts"
 import type {Request, Response} from "express";
 import type {Cart} from "../models/cart.ts";
+import type {CartProduct} from "../models/cartProduct.ts";
 
 export async function getAllCarts(_req: Request, res: Response) {
     const carts: Cart[] = await cartsService.getAll();
     return res.status(200).json(carts);
 }
 
-export async function getCartByUserId(req: Request, res: Response) {
+export async function getCartProductsByUserId(req: Request, res: Response) {
     const userId = req.user!.userId
-    const cart:Cart[] = await cartsService.getCartByUserId(userId)
-    return res.status(200).json(cart);
+    const cartProducts:CartProduct[] = await cartsService.getCartByUserId(userId)
+    return res.status(200).json(cartProducts);
 }
 export async function addProductToCart(req:Request, res: Response) {
     const {productId} = req.body;

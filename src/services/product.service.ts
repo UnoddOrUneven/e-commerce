@@ -6,7 +6,7 @@ export async function getAllProducts(): Promise<Product[]> {
 }
 
 export async function addProduct(product: ProductInput) {
-    await productRepository.addProduct(
+    return productRepository.addProduct(
         product.name,
         product.description,
         product.price,

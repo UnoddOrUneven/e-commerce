@@ -1,5 +1,6 @@
 import type {Cart} from "../models/cart.ts"
 import pool from "../db/pool"
+import type {CartProduct} from "../models/cartProduct.ts";
 
 export async function getAllCarts(): Promise<Cart[]> {
     const response = await pool.query(
@@ -8,16 +9,26 @@ export async function getAllCarts(): Promise<Cart[]> {
     return response.rows;
 }
 
-export async function getCartByUserId(userId: number): Promise<Cart[]> {
+export async function getCartByUserId(userId: number): Promise<CartProduct[]> {
     const response = await pool.query(
-        "SELECT * FROM carts WHERE user_id=$1", [userId]
+        `SELECT 
+                        p.id,
+                        p.name,
+                        p.description,
+                        p.price,
+                        p.stock,
+                        c.product_quantity
+                        FROM carts c 
+                        JOIN products p ON p.id = c.product_id
+                        WHERE c.user_id=$1`,
+                        [userId]
     );
     return response.rows;
 }
 
 export async function addProductToCart(userId: number, productId: number) {
     await pool.query(
-        "INSERT INTO carts (product_id,user_id) VALUES ($1,$2);", [userId, productId]
+        "INSERT INTO carts (product_id,user_id) VALUES ($1,$2);", [productId,userId]
     );
 }
 

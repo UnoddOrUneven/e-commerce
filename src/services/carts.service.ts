@@ -1,9 +1,10 @@
 import type {Cart} from "../models/cart.ts";
 import * as cartsRepository from "../carts/carts.repository"
+import type {CartProduct} from "../models/cartProduct.ts";
 export async function getAll(): Promise<Cart[]> {
     return await cartsRepository.getAllCarts();
 }
-export async function getCartByUserId(user_id: number): Promise<Cart[]> {
+export async function getCartByUserId(user_id: number): Promise<CartProduct[]> {
     return await cartsRepository.getCartByUserId(user_id);
 }
 export async function addToCart(user_id:number, product_id:number) {

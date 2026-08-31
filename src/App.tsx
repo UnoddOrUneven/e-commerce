@@ -1,50 +1,23 @@
 import './App.css'
-import {useState,useEffect} from "react";
-import type {User} from "./models/user.ts";
-import type {Product} from "./models/product.ts";
-import {ProductCard} from "./components/ProductCard.tsx";
-
-async function  getAllProducts() {
-  const response =  await fetch("/api/products/get-all");
-  return await response.json();
-}
-async function getAllUsers(){
-    const response =  await fetch("/api/users/get-all")
-    return await response.json();
-}
+import LoginPage from "./pages/LoginPage.tsx";
+import RegisterPage from "./pages/RegisterPage.tsx";
+import {ProductsCatalogue} from "./pages/ProductsCatalogue.tsx";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {CartPage} from "./pages/CartPage.tsx";
 
 function App() {
-    const [users,setUsers] = useState([]);
-    useEffect(() => {
-        getAllUsers().then(setUsers);
-    }, []);
-
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        getAllProducts().then(setProducts);
-    },[])
-
-  return (
-  <div className="product-container">
-    Products:
-   <ul>
-     {products.map((product : Product) => (
-         <li key={product.id}>
-             <ProductCard product={product}/>
-         </li>
-     ))}
-   </ul>
-      Users:
-      <ul>
-      {users.map((user: User) => (
-          <li key={user.id}>
-              {user.name}
-          </li>
-      ))}
-      </ul>
-  </div>
-
-  )
+    return (
+        <div>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="" element={<ProductsCatalogue/>}/>
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/register" element={<RegisterPage/>}/>
+                    <Route path ="/cart" element={<CartPage/>}/>
+                </Routes>
+            </BrowserRouter>
+        </div>
+    )
 }
 
 export default App
