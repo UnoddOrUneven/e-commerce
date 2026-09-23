@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import type {Product} from "../models/product.ts";
 import {useNavigate} from "react-router-dom";
 import {addToCart} from "../api/cart.ts";
-
+import "../components/ProductCatalogue/product-catalogue.css"
 async function onAddToCart(productId: number) {
     await addToCart(productId);
 }
@@ -17,7 +17,6 @@ export function ProductsCatalogue() {
             const products = await getAllProducts();
             setProducts(products)
         }
-
         loadProducts();
     }, []);
 
@@ -30,7 +29,7 @@ export function ProductsCatalogue() {
                     <ProductCard product={product}
                                  key={product.id}
                     />
-                    <button className="add-to-cart-btn" onClick={() => onAddToCart(product.id)}  >Add to cart</button>
+                    <button className="add-to-cart-btn" onClick={() => onAddToCart(product.id)}>Add to cart</button>
                     </div>
                         ))}
             </div>

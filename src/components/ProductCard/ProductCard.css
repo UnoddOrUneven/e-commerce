@@ -1,6 +1,6 @@
 .card {
     display:grid;
-    grid-template-columns: 10rem 1fr 6rem;
+    grid-template-columns: 10rem 1fr auto;
     grid-template-rows: 3rem 2fr 2rem;
     grid-template-areas:
     "image name add-button"
@@ -10,20 +10,28 @@
     padding: 10px 0px 10px 10px;
     margin:15px;
     color: White;
-    background-color: slategray;
+    background-color: #1c1b1b;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #1c1b1b;
     width: 50rem;
-
 }
 .add-to-cart-btn{
     grid-area: add-button;
-    width: 100%;
+    position: relative;
+    left: 17rem;
+    top: -1rem;
+    justify-self: end;
+    width: 25%;
     height: 100%;
-    background-color: slateblue;
+    background-color: #1c1b1b;
     font-size: 1.2rem;
     cursor: pointer;
+    border: 1px solid black;
+    border-radius: 8px;
 }
 .add-to-cart-btn:hover{
-    background-color: mediumslateblue;
+    background-color: #282719;
 }
 .add-to-cart-btn:active {
     transform: scale(0.98);
@@ -38,9 +46,12 @@
 }
 .card-image{
     grid-area: image;
-    width:10rem;
+    width:15rem;
     height:10rem;
-    background-color: lightgray;
+    background-color: black;
+    border-color: black;
+    border-radius: 10px;
+    border-width: 1px;
 }
 .card-price{
     grid-area: price;

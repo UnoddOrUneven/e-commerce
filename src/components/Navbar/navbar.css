@@ -1,0 +1,16 @@
+.left-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15rem;
+    height: 100%;
+    z-index: 1000;
+    background-color: #1c1b1b;
+}
+.title{
+    margin: 1rem;
+    color: #e5e4e7;
+    font-family: 'Prata', serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+}

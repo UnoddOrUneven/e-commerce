@@ -21,7 +21,6 @@ export function CartPage(){
         {cartProducts.map((product:Product) => (
             <ProductCard product={product} key = {product.id}></ProductCard>
     ))}
-
     </div>
 
 )
